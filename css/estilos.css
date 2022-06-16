@@ -1,0 +1,472 @@
+.css-button-shadow--rose {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff6392;
+  box-shadow: 0 3px 1px -2px #ccc, 0 2px 2px 0 #ccc, 0 1px 5px 0 #ccc; }
+
+.css-button-shadow--rose:active {
+  box-shadow: 0 4px 2px -3px #ccc, 0 4px 5px 1px #ccc, 0 2px 7px 1px #ccc; }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white; }
+
+.titulo {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  text-decoration: solid #FFBCBC underline; }
+
+.mainGrid {
+  display: grid;
+  grid-template-areas: "navBar" "main" "footer";
+  grid-template-columns: 100%;
+  grid-template-rows: 10% auto 20%; }
+
+#navBar {
+  grid-area: navBar;
+  background-color: #FFBCBC;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0  15px 15px; }
+  #navBar img {
+    width: auto;
+    height: inherit; }
+  #navBar ul {
+    display: flex;
+    align-items: center;
+    background-color: inherit; }
+    #navBar ul li {
+      margin: 10px 10px;
+      padding: 0 5px;
+      background-color: inherit;
+      list-style: none; }
+      #navBar ul li a {
+        font-size: 24px;
+        text-decoration: none;
+        background-color: inherit; }
+
+#main {
+  grid-area: main; }
+
+.banner {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 2%; }
+
+.cardContainer {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center; }
+
+.card {
+  background-color: #FFBCBC;
+  width: 15%;
+  height: 150px;
+  margin: 2rem;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px; }
+
+.cardText {
+  background-color: #FFBCBC; }
+
+.card img {
+  background-color: #FFBCBC;
+  width: 50px;
+  height: 50px; }
+
+.formContainer {
+  width: 25%;
+  height: 100%;
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.form {
+  background-color: #FFBCBC;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 2rem 0;
+  width: 400px;
+  margin-bottom: 4rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
+
+.form label {
+  background-color: #FFBCBC; }
+
+.btn, .btn--1, .btn--2 {
+  width: 50%;
+  height: 50px;
+  margin: 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
+
+.btn--1 {
+  background-color: red; }
+
+.btn--2 {
+  background-color: green; }
+
+.links {
+  display: flex;
+  justify-content: center; }
+
+.imgLink {
+  width: 50px;
+  height: 50px;
+  margin: 2rem; }
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(6, 200px);
+  grid-template-rows: repeat(5, 200px);
+  justify-content: center;
+  gap: 5px; }
+
+.celda {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #FFBCBC; }
+  .celda img {
+    width: 190px;
+    height: 190px; }
+
+#footer {
+  grid-area: footer; }
+
+.copy p {
+  color: white;
+  text-align: end;
+  padding: 0 1rem; }
+
+.recetasContainer {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: #FFBCBC;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.cardRecetas {
+  width: 25%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "imagen" "texto";
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 30%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  transition: all 1000ms; }
+
+.cardRecetas:hover {
+  transform: translateY(-20px); }
+
+.cardImagen1 {
+  grid-area: imagen;
+  background-image: url("../img/blog/historiaEssen.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover; }
+
+.cardImagen2 {
+  grid-area: imagen;
+  background-image: url("../img/blog/historiaEssen.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover; }
+
+.cardImagen3 {
+  grid-area: imagen;
+  background-image: url("../img/blog/historiaEssen.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover; }
+
+.cardTexto {
+  grid-area: texto;
+  font-size: 15px;
+  font-weight: 300; }
+
+.blogCardContainer {
+  display: flex;
+  width: 100%;
+  height: 70vh;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: #FFBCBC;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.cardBlog {
+  width: 40%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "texto" "imagen";
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 85%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  transition: all 1000ms; }
+
+.cardBlog:hover {
+  transform: translateY(-20px); }
+
+.cardBlogImagen {
+  grid-area: imagen;
+  background-image: url("../img/blog/historiaEssen.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover; }
+
+.cardBlogTexto {
+  grid-area: texto;
+  font-size: 10px;
+  font-weight: 300; }
+
+@media screen and (max-width: 412px) {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color: white; }
+  .titulo {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    text-decoration: solid #FFBCBC underline; }
+  .mainGrid {
+    display: grid;
+    grid-template-areas: "navBar" "main" "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: 10% auto 20%; }
+  #navBar {
+    grid-area: navBar;
+    background-color: #FFBCBC;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0  15px 15px; }
+    #navBar img {
+      width: auto;
+      height: inherit; }
+    #navBar ul {
+      width: inherit;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: inherit; }
+      #navBar ul li {
+        margin: 5px 5px;
+        padding: 0 5px;
+        background-color: inherit;
+        list-style: none; }
+        #navBar ul li a {
+          font-size: 12px;
+          text-decoration: none;
+          background-color: inherit; }
+  #main {
+    grid-area: main; }
+  .banner {
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 2%; }
+  .cardContainer {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; }
+  .card {
+    background-color: #FFBCBC;
+    width: 15%;
+    height: 150px;
+    margin: 2rem;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px; }
+  .formContainer {
+    width: 25%;
+    height: 100%;
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .form {
+    background-color: #FFBCBC;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    width: 80%;
+    margin-bottom: 4rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
+  .form label {
+    background-color: #FFBCBC; }
+  .btn, .btn--1, .btn--2 {
+    width: 30%;
+    height: 30px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
+  .btn--1 {
+    width: 40%;
+    height: 30px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    background-color: red; }
+  .btn--2 {
+    width: 40%;
+    height: 30px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    background-color: green; }
+  .links {
+    display: flex;
+    justify-content: center; }
+  .imgLink {
+    width: 50px;
+    height: 50px;
+    margin: 1rem; }
+  .table {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(15, 150px);
+    gap: 5px;
+    margin-bottom: 2rem; }
+  .celda {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #FFBCBC; }
+    .celda img {
+      width: 140px;
+      height: 140px; }
+  #footer {
+    grid-area: footer;
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+  .copy p {
+    color: white;
+    text-align: end;
+    padding: 0 1rem; }
+  .recetasContainer {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: #FFBCBC;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+  .cardRecetas {
+    width: 25%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "imagen" "texto";
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 40%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    transition: all 1000ms; }
+  .cardRecetas:hover {
+    transform: translateY(-20px); }
+  .cardImagen1 {
+    grid-area: imagen;
+    background-image: url("../img/blog/historiaEssen.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover; }
+  .cardImagen2 {
+    grid-area: imagen;
+    background-image: url("../img/blog/historiaEssen.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover; }
+  .cardImagen3 {
+    grid-area: imagen;
+    background-image: url("../img/blog/historiaEssen.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover; }
+  .cardTexto {
+    grid-area: texto;
+    font-size: 10px;
+    font-weight: 300;
+    align-content: center; }
+  .blogCardContainer {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: #FFBCBC;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 2rem; }
+  .cardBlog {
+    width: 45%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "texto" "imagen";
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    transition: all 1000ms; }
+  .cardBlog:hover {
+    transform: translateY(-20px); }
+  .cardBlogImagen {
+    grid-area: imagen;
+    background-image: url("../img/blog/historiaEssen.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover; }
+  .cardBlogTexto {
+    grid-area: texto;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center; } }
