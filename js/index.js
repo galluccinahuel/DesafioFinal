@@ -59,12 +59,10 @@ class Producto{
 const cacerolaGrande = new Producto(1, "cacerolaGRande", 1200, "cacerolas", "breve descripcion");
 const cacerolaChica = new Producto(1, "cacerolaChica", 800, "cacerolas", "breve descripcion");
 
-
 let precioCacerolaGrande = cacerolaGrande.m_precio;
 let precioCacerolaChica = cacerolaChica.m_precio;
 
 let tamañoCacerola = prompt("¿Buscas cacerolas grandes o chicas?");
-
 
 if (tamañoCacerola == "grande" || tamañoCacerola == "grandes") {
     
