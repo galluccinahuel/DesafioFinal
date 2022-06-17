@@ -1,27 +1,16 @@
-
-class ListaDeComprasActual{
-
-    constructor(){
-        let precioFinal;
-    }
-
-    precioFinal = carrito.DevolverPrecioFinal;
-}
-
-
 class Carrito{
     
     constructor(){
         
-        this.m_numeroDeProductos = [];
-        let m_precioFinal;
+        this.m_listaDeProductos = [];
+        let m_precioTotalCompra;
     }
     
-    Vender(){
+    vender(){
 
-        for (const producto of this.m_numeroDeProductos) {
+        for (const producto of this.m_listaDeProductos) {
             
-            m_precioFinal += producto.m_precio;
+            m_precioTotalCompra += producto.m_precio;
             
         }
 
@@ -36,23 +25,21 @@ class Carrito{
 
     AgregarAListaDeCompras(producto){
 
-        this.m_numeroDeProductos.push(producto);
+        this.m_listaDeProductos.push(producto);
 
     }
 
     QuitarAListaDeCompras(Producto){
-        this.m_numeroDeProductos.pop(Producto);
+        this.m_listaDeProductos.pop(Producto);
     }
 
     DevolverPrecioFinal(){
 
-        return m_precioFinal;
+        return m_precioTotalCompra;
     }
 
 
 }
-
-
 
 class Producto{
 
@@ -71,5 +58,3 @@ class Producto{
 
 
 const carrito = new Carrito();
-
-const listaDeComprasActual = new ListaDeComprasActual();
