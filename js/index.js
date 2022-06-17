@@ -43,18 +43,47 @@ class Carrito{
 
 class Producto{
 
-    constructor( id, nombre, precio, categoria, descripcion, cantidad){
+    constructor( id, nombre, precio, categoria, descripcion,){
 
         this.m_id = id;
         this.m_nombre  = nombre;
-        this.m_precio = parseFloat(precio);
+        this.m_precio = precio;
         this.m_categoria = categoria;
         this.m_descripcion = descripcion;
-        this.m_cantidad = cantidad;
+
     }
 
 
 }
 
+const cacerolaGrande = new Producto(1, "cacerolaGRande", 1200, "cacerolas", "breve descripcion");
+const cacerolaChica = new Producto(1, "cacerolaChica", 800, "cacerolas", "breve descripcion");
+
+
+let precioCacerolaGrande = cacerolaGrande.m_precio;
+let precioCacerolaChica = cacerolaChica.m_precio;
+
+let tamañoCacerola = prompt("¿Buscas cacerolas grandes o chicas?");
+
+
+if (tamañoCacerola == "grande" || tamañoCacerola == "grandes") {
+    
+    let cantidad = prompt("¿Cuantas quieres?")
+    let precioFinal = precioCacerolaGrande * cantidad;
+    alert("el precio a abonar es de: " + precioFinal);
+    alert("FELICIDADES, REALIZASTE UNA COMPRA");
+
+
+}
+else if(tamañoCacerola == "chica" || tamañoCacerola == "chicas"){
+
+    let cantidad = prompt("¿Cuantas quieres?")
+    let precioFinal = precioCacerolaChica * cantidad;
+    alert("el precio a abonar es de: " + precioFinal);
+    alert("FELICIDADES, REALIZASTE UNA COMPRA");
+}
+else{
+    prompt("Ese tamaño no existe");
+}
 
 const carrito = new Carrito();
