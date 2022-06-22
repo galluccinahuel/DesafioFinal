@@ -70,7 +70,9 @@ if (tamañoCacerola == "grande" || tamañoCacerola == "grandes") {
     let precioFinal = precioCacerolaGrande * cantidad;
     alert("el precio a abonar es de: " + precioFinal);
     alert("FELICIDADES, REALIZASTE UNA COMPRA");
+    celda1.innerText = "";
     celda1.append(div);
+
     div.className = "titulo";
     div.innerHTML = "<p>Compraste cacerolas <strong>GRANDES</strong> y se va a mostrar en este recuadro, el monto total es de: </p>" + precioFinal;
 
@@ -81,11 +83,10 @@ else if(tamañoCacerola == "chica" || tamañoCacerola == "chicas"){
     let precioFinal = precioCacerolaChica * cantidad;
     alert("el precio a abonar es de: " + precioFinal);
     alert("FELICIDADES, REALIZASTE UNA COMPRA");
+    celda2.innerText = "";
     celda2.append(div);
     div.className = "titulo";
     div.innerHTML = "<p>Compraste cacerolas <strong>CHICAS</strong> y se va a mostrar en este recuadro, el monto total es de: </p>" + precioFinal;
-
-
 
 }
 else{
