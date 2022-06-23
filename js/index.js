@@ -62,7 +62,7 @@ let celda3 = document.getElementById("celda3");
 let div = document.createElement("div");
 
 
-let tamañoCacerola = prompt("¿Buscas cacerolas grandes o chicas?");
+/* let tamañoCacerola = prompt("¿Buscas cacerolas grandes o chicas?");
 
 if (tamañoCacerola == "grande" || tamañoCacerola == "grandes") {
     
@@ -95,3 +95,4 @@ else{
 }
 
 const carrito = new Carrito();
+ */

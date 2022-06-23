@@ -162,17 +162,46 @@
 
 .table{
     display: grid;
-    grid-template-columns: repeat(6, 200px);
-    grid-template-rows: repeat(5,200px);
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(4,250px);
     justify-content: center;
     gap: 5px;
+
+    
 }
 
 .celda{
-    @include sizes(200px, 200px);
+    @include sizes(250px, 250px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 2px solid map-get($colores,colorRosa);
     img{
-        @include sizes(190px, 190px);
+        @include sizes(220px, 180px);
+    }
+    div{
+        @include sizes(250px, 70px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: map-get($colores,colorRosa);
+        input{
+            @include sizes(100px, 50px);
+            border-radius: 10px;
+            box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
+            background-color: map-get($colores,colorBlanco);;
+            color: map-get($colores,colorNegro);
+            cursor: pointer;
+
+        }
+        input:hover{
+            background-color: map-get($colores,colorNegro);
+            color: map-get($colores,colorRosa);
+        }
+        p{
+            background-color: map-get($colores,colorRosa);
+            color: map-get($colores,colorNegro);;
+        }
     }
 }
 
