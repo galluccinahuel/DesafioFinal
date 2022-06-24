@@ -2,38 +2,33 @@ class Carrito{
     
     constructor(){
         
-        this.m_listaDeProductos = [];
+        const m_listaDeProductos = [];
         let m_precioTotalCompra;
     }
     
     vender(){
 
-        for (const producto of this.m_listaDeProductos) {
+        for (const producto of m_listaDeProductos) {
             
             m_precioTotalCompra += producto.m_precio;
             
         }
-        this.DevolverPrecioFinal();
-    }
-
-    CrearProducto(){
-
-        const producto  = new Producto();
     }
 
     AgregarAListaDeCompras(producto){
 
         this.m_listaDeProductos.push(producto);
+        
     }
 
     QuitarAListaDeCompras(Producto){
-        this.m_listaDeProductos.pop(Producto);
+        m_listaDeProductos.pop(Producto);
     }
 
-    DevolverPrecioFinal(){
-
-        return m_precioTotalCompra;
+    DevolverLista(){
+        return m_listaDeProductos.length;
     }
+
 }
 
 class Producto{
@@ -94,5 +89,46 @@ else{
     alert("Ese tamaño no existe");
 }
 
-const carrito = new Carrito();
- */
+*/
+
+let producto1 = new Producto(1, "cacerolaGRande", 1200, "cacerolas", "breve descripcion")
+
+let carrito = [];
+
+let cantidad = carrito.length;
+
+
+function SumarCantidad() {
+    carrito.push(producto1);
+    pCantidad.innerText = carrito.length;
+}
+
+function RestarCantidad() {
+    carrito.pop(producto1);
+    pCantidad.innerText = carrito.length;
+}
+
+function MostrarTotal(){
+    total.innerText = "Total: " + carrito.length * producto1.m_precio;
+}
+
+let pCantidad = document.getElementById("cantidad");
+
+
+let total = document.getElementById("total");
+
+
+
+let boton1 = document.getElementById("btnCarrito1");
+boton1.onclick =  () =>{SumarCantidad()};
+
+
+
+let boton2= document.getElementById("btnCarrito2")
+boton2.onclick =  () =>{RestarCantidad() };
+
+
+let boton3= document.getElementById("btnCarrito3")
+boton3.onclick =  () =>{MostrarTotal()};
+
+

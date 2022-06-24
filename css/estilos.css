@@ -182,7 +182,8 @@
       color: #FFBCBC; }
     .celda div p {
       background-color: #FFBCBC;
-      color: black; }
+      color: black;
+      font-weight: bold; }
 
 #footer {
   grid-area: footer; }

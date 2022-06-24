@@ -200,7 +200,8 @@
         }
         p{
             background-color: map-get($colores,colorRosa);
-            color: map-get($colores,colorNegro);;
+            color: map-get($colores,colorNegro);
+            font-weight: bold;
         }
     }
 }
