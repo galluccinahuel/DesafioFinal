@@ -2,133 +2,119 @@ class Carrito{
     
     constructor(){
         
-        const m_listaDeProductos = [];
-        let m_precioTotalCompra;
+        this.m_listaDeProductos = [];
+        this.m_precioTotalCompra;
     }
     
-    vender(){
+    AgregarProducto(producto){
 
-        for (const producto of m_listaDeProductos) {
+
+        if (carrito.m_listaDeProductos.includes(producto)) {    
+
+            this.DevolverProducto(producto);
+
+            producto.m_cantidad++;
+                
+        }
+        else{
             
-            m_precioTotalCompra += producto.m_precio;
+            this.m_listaDeProductos.push(producto);
             
         }
+
     }
 
-    AgregarAListaDeCompras(producto){
+    QuitarProducto(producto){
 
-        this.m_listaDeProductos.push(producto);
+        if (carrito.m_listaDeProductos.includes(producto)) {    
+
+            if (this.DevolverProducto(producto).m_cantidad >1 )  {
+            
+                producto.m_cantidad--;
+
+            }
+            else{
+    
+                let index = this.m_listaDeProductos.indexOf(producto);
+                console.log(index);
+                this.m_listaDeProductos.splice(index, 1);
+                
+            }            
+   
+        }
+        else{
+            console.log("no hay producto: " + producto.m_nombre);
+        }
         
     }
 
-    QuitarAListaDeCompras(Producto){
-        m_listaDeProductos.pop(Producto);
+    DevolverMontoTotalCarrito(){
+
+        let montoTotal =0;
+
+        for (const i of this.m_listaDeProductos) {
+            
+            montoTotal += i.m_precio * i.m_cantidad;
+        }
+
+        return montoTotal;
     }
 
-    DevolverLista(){
-        return m_listaDeProductos.length;
+    DevolverProducto(producto){
+
+        for (const producto of this.m_listaDeProductos) {
+            
+            return producto;
+        }
+
     }
 
 }
 
 class Producto{
 
-    constructor( id, nombre, precio, categoria, descripcion,){
-
+    constructor(id, nombre, precio){
+        
         this.m_id = id;
-        this.m_nombre  = nombre;
+        this.m_nombre = nombre;
         this.m_precio = precio;
-        this.m_categoria = categoria;
-        this.m_descripcion = descripcion;
+        this.m_cantidad = 1;
     }
-}
-
-const cacerolaGrande = new Producto(1, "cacerolaGRande", 1200, "cacerolas", "breve descripcion");
-const cacerolaChica = new Producto(1, "cacerolaChica", 800, "cacerolas", "breve descripcion");
-
-let precioCacerolaGrande = cacerolaGrande.m_precio;
-let precioCacerolaChica = cacerolaChica.m_precio;
-
-
-let celda1 = document.getElementById("celda1");
-let celda2 = document.getElementById("celda2");
-let celda3 = document.getElementById("celda3");
-
-let div = document.createElement("div");
-
-
-/* let tamañoCacerola = prompt("¿Buscas cacerolas grandes o chicas?");
-
-if (tamañoCacerola == "grande" || tamañoCacerola == "grandes") {
-    
-    let cantidad = prompt("¿Cuantas quieres?")
-    let precioFinal = precioCacerolaGrande * cantidad;
-    alert("el precio a abonar es de: " + precioFinal);
-    alert("FELICIDADES, REALIZASTE UNA COMPRA");
-    celda1.innerText = "";
-    celda1.append(div);
-
-    div.className = "titulo";
-    div.innerHTML = "<p>Compraste cacerolas <strong>GRANDES</strong> y se va a mostrar en este recuadro, el monto total es de: </p>" + precioFinal;
 
 }
-else if(tamañoCacerola == "chica" || tamañoCacerola == "chicas"){
 
-    let cantidad = prompt("¿Cuantas quieres?")
-    let precioFinal = precioCacerolaChica * cantidad;
-    alert("el precio a abonar es de: " + precioFinal);
-    alert("FELICIDADES, REALIZASTE UNA COMPRA");
-    celda2.innerText = "";
-    celda2.append(div);
-    div.className = "titulo";
-    div.innerHTML = "<p>Compraste cacerolas <strong>CHICAS</strong> y se va a mostrar en este recuadro, el monto total es de: </p>" + precioFinal;
+const carrito = new Carrito();
 
-}
-else{
-
-    alert("Ese tamaño no existe");
-}
-
-*/
-
-let producto1 = new Producto(1, "cacerolaGRande", 1200, "cacerolas", "breve descripcion")
-
-let carrito = [];
-
-let cantidad = carrito.length;
+const cacerola = new Producto(1, "cacerola", 280);
+const sarten = new Producto(2, "sarten", 100);
+const vaso = new Producto(3, "vaso", 500);
+const tenedor = new Producto(4, "tenedor", 100);
 
 
-function SumarCantidad() {
-    carrito.push(producto1);
-    pCantidad.innerText = carrito.length;
-}
+carrito.AgregarProducto(cacerola);
+carrito.AgregarProducto(cacerola);
+carrito.AgregarProducto(sarten);
+carrito.AgregarProducto(sarten);
+carrito.AgregarProducto(vaso);
+carrito.AgregarProducto(vaso);
 
-function RestarCantidad() {
-    carrito.pop(producto1);
-    pCantidad.innerText = carrito.length;
-}
+const carritoJSON = JSON.stringify(carrito);
 
-function MostrarTotal(){
-    total.innerText = "Total: " + carrito.length * producto1.m_precio;
-}
-
-let pCantidad = document.getElementById("cantidad");
-
-
-let total = document.getElementById("total");
+/* sessionStorage.setItem("carrito", carritoJSON );
+ */
 
 
 
-let boton1 = document.getElementById("btnCarrito1");
-boton1.onclick =  () =>{SumarCantidad()};
+//console.log(carritoJSON);
+console.log(carrito.m_listaDeProductos);
+
+carrito.QuitarProducto(cacerola);
+carrito.QuitarProducto(cacerola);
+//carrito.QuitarProducto(sarten);
+//carrito.QuitarProducto(sarten);
+
+console.log(carrito.DevolverMontoTotalCarrito());
 
 
-
-let boton2= document.getElementById("btnCarrito2")
-boton2.onclick =  () =>{RestarCantidad() };
-
-
-let boton3= document.getElementById("btnCarrito3")
-boton3.onclick =  () =>{MostrarTotal()};
 
 
