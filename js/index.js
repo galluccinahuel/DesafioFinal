@@ -141,20 +141,30 @@ function AgregarAlCarrito(e){
 
     const btn = e.target;
     const id = btn.getAttribute("id"); 
-    console.log(id);
+
     
     let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
-    console.log(productoEnVenta);
+
 
     let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-    console.log(productoEncarrito);
-    
+
+    if (productoEncarrito) {
+        
+        productoEnVenta.m_cantidad++;
+        console.log("Sumado");
+    }
+    else{
+        
+        productosEnCarrito.push(productoEnVenta);
+        console.log("agregado");
+    }
 }
 
 function QuitarCarrito(e){
 
     const btn = e.target;
     const id = btn.getAttribute("id");
+    console.log(productosEnCarrito);
 }
 
 
