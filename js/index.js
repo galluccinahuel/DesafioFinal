@@ -61,11 +61,14 @@ class Carrito{
         return montoTotal;
     }
 
-    DevolverProducto(producto){
+    DevolverProducto(id){
 
-        for (const producto of this.m_listaDeProductos) {
-            
+        if(this.m_listaDeProductos.find(prod => prod.m_id == id)){
+
             return producto;
+        }
+        else{
+            console.log("no existe");
         }
 
     }
@@ -83,58 +86,90 @@ class Producto{
 
 }
 
+let productosEnVenta = [];
+
+const carrito = new Carrito();
+
 const cacerola = new Producto(1, "Cacerola", "$100");
 const Sarten = new Producto(2, "Sarten", "$200");
 const cacerolita = new Producto(3, "Cacerolita", "$500");
 const bifera = new Producto(4, "Bifera", "$600");
 
-const carrito = new Carrito();
-
-let productosEnVenta=[
+productosEnVenta=[
     cacerola,
     Sarten,
     cacerolita,
-    bifera
+    bifera,
 ]
 
-
-let tabla = document.getElementById("tabla");
-
-
-for (const i of productosEnVenta) {
+function DesplegarProductos(){
     
-    let divCardTabla = document.createElement("div");
-    let divCeldaTabla = document.createElement("div");
-    let inputAgregar = document.createElement("input");
-    let inputQuitar = document.createElement("input");
+    let tabla = document.getElementById("tabla");
 
-    inputAgregar.type = "button";
-    inputQuitar.type = "button";
-    inputAgregar.id = "btnAgregar-" + i.m_id;
-    inputQuitar.id = "btnQuitar" + i.m_id;
+    for (const i of productosEnVenta) {
+        
+        let divCardTabla = document.createElement("div");
+        let divCeldaTabla = document.createElement("div");
+        let inputAgregar = document.createElement("input");
+        let inputQuitar = document.createElement("input");
     
-    divCardTabla.className = "celda";
-    tabla.append(divCardTabla);
-    divCardTabla.append(divCeldaTabla);
-    divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
-    divCeldaTabla.append(inputAgregar);
-    divCeldaTabla.append(inputQuitar);
+        inputAgregar.type = "button";
+        inputQuitar.type = "button";
+        inputAgregar.className = "btnAgregarCarrito"
+        inputQuitar.className = "btnQuitarCarrito"
+        inputAgregar.id = i.m_id;
+        inputQuitar.id = i.m_id;
+        
+        divCardTabla.className = "celda";
+        tabla.append(divCardTabla);
+        divCardTabla.append(divCeldaTabla);
+        divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
+        divCeldaTabla.append(inputAgregar);
+        divCeldaTabla.append(inputQuitar);
+    
+        inputAgregar.value = "Agregar";
+        inputQuitar.value = "Quitar";
+    
+    }
+}
 
-    inputAgregar.value = "Agregar";
-    inputQuitar.value = "Quitar";
+function GetBtnAgregar(){
+
+    const btnAgregar = document.getElementsByClassName("btnAgregarCarrito");
+
+    for (const i of btnAgregar) {
+        
+        i.addEventListener("click", AgregarAlCarrito);
+    }
+
+}
+
+function GetBtnQuitar(){
+
+    const btnAgregar = document.getElementsByClassName("btnQuitarCarrito");
+
+    for (const i of btnAgregar) {
+        
+        i.addEventListener("click", QuitarCarrito);
+    }
 
 }
 
 
-let btnAgregar = document.getElementById("btnAgregar-1");
-let btnAgregar2 = document.getElementById("btnAgregar-2");
-let btnAgregar3 = document.getElementById("btnAgregar-3");
-let btnAgregar4 = document.getElementById("btnAgregar-4");
-let btnQuitar = document.getElementById("btnQuitar-1");
-let btnQuitar2 = document.getElementById("btnQuitar-2");
-let btnQuitar3 = document.getElementById("btnQuitar-3");
-let btnQuitar4 = document.getElementById("btnQuitar-4");
+function AgregarAlCarrito(e){
 
-btnAgregar.onclick = () => {carrito.AgregarProducto(cacerola);}
+    const btn = e.target;
+    const id = btn.getAttribute("id");    
+
+}
+
+function QuitarCarrito(e){
+
+    const btn = e.target;
+    const id = btn.getAttribute("id");
+}
 
 
+DesplegarProductos();
+GetBtnAgregar();
+GetBtnQuitar()
