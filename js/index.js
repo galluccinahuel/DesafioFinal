@@ -1,3 +1,4 @@
+
 class Carrito{
     
     constructor(){
@@ -70,7 +71,6 @@ class Carrito{
     }
 
 }
-
 class Producto{
 
     constructor(id, nombre, precio){
@@ -83,37 +83,51 @@ class Producto{
 
 }
 
+const cacerola = new Producto(1, "Cacerola", "$100");
+const Sarten = new Producto(2, "Sarten", "$200");
+const cacerolita = new Producto(3, "Cacerolita", "$500");
+const bifera = new Producto(4, "Bifera", "$600");
+
 const carrito = new Carrito();
 
-const cacerola = new Producto(1, "cacerola", 280);
-const sarten = new Producto(2, "sarten", 100);
-const vaso = new Producto(3, "vaso", 500);
-const tenedor = new Producto(4, "tenedor", 100);
+let productosEnVenta=[
+    cacerola,
+    Sarten,
+    cacerolita,
+    bifera
+]
 
 
-carrito.AgregarProducto(cacerola);
-carrito.AgregarProducto(cacerola);
-carrito.AgregarProducto(sarten);
-carrito.AgregarProducto(sarten);
-carrito.AgregarProducto(vaso);
-carrito.AgregarProducto(vaso);
-
-const carritoJSON = JSON.stringify(carrito);
-
-/* sessionStorage.setItem("carrito", carritoJSON );
- */
+let tabla = document.getElementById("tabla");
 
 
+for (const i of productosEnVenta) {
+    
+    let divCardTabla = document.createElement("div");
+    let divCeldaTabla = document.createElement("div");
+    let inputAgregar = document.createElement("input");
+    let inputQuitar = document.createElement("input");
 
-//console.log(carritoJSON);
-console.log(carrito.m_listaDeProductos);
+    inputAgregar.type = "button";
+    inputQuitar.type = "button";
+    inputAgregar.id = i.m_id;
+    inputQuitar.id = i.m_id;
+    
+    divCardTabla.className = "celda";
+    divCeldaTabla.className = "celda div";
+    tabla.append(divCardTabla);
+    divCardTabla.append(divCeldaTabla);
+    //divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
+    divCeldaTabla.append(inputAgregar);
+    divCeldaTabla.append(inputQuitar);
 
-carrito.QuitarProducto(cacerola);
-carrito.QuitarProducto(cacerola);
-//carrito.QuitarProducto(sarten);
-//carrito.QuitarProducto(sarten);
+    inputAgregar.value = "Agregar";
+    inputQuitar.value = "Quitar";
 
-console.log(carrito.DevolverMontoTotalCarrito());
+}
+
+
+
 
 
 

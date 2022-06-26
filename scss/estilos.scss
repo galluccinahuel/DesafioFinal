@@ -182,11 +182,12 @@
     div{
         @include sizes(250px, 70px);
         display: flex;
+        flex-direction: row;
         justify-content: space-around;
         align-items: center;
         background-color: map-get($colores,colorRosa);
         input{
-            @include sizes(100px, 50px);
+            @include sizes(50%, 50%);
             border-radius: 10px;
             box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
             background-color: map-get($colores,colorBlanco);;
