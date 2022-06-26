@@ -110,14 +110,13 @@ for (const i of productosEnVenta) {
 
     inputAgregar.type = "button";
     inputQuitar.type = "button";
-    inputAgregar.id = i.m_id;
-    inputQuitar.id = i.m_id;
+    inputAgregar.id = "btnAgregar-" + i.m_id;
+    inputQuitar.id = "btnQuitar" + i.m_id;
     
     divCardTabla.className = "celda";
-    divCeldaTabla.className = "celda div";
     tabla.append(divCardTabla);
     divCardTabla.append(divCeldaTabla);
-    //divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
+    divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
     divCeldaTabla.append(inputAgregar);
     divCeldaTabla.append(inputQuitar);
 
@@ -127,8 +126,15 @@ for (const i of productosEnVenta) {
 }
 
 
+let btnAgregar = document.getElementById("btnAgregar-1");
+let btnAgregar2 = document.getElementById("btnAgregar-2");
+let btnAgregar3 = document.getElementById("btnAgregar-3");
+let btnAgregar4 = document.getElementById("btnAgregar-4");
+let btnQuitar = document.getElementById("btnQuitar-1");
+let btnQuitar2 = document.getElementById("btnQuitar-2");
+let btnQuitar3 = document.getElementById("btnQuitar-3");
+let btnQuitar4 = document.getElementById("btnQuitar-4");
 
-
-
+btnAgregar.onclick = () => {carrito.AgregarProducto(cacerola);}
 
 
