@@ -1,101 +1,25 @@
-
-class Carrito{
-    
-    constructor(){
-        
-        this.m_listaDeProductos = [];
-        this.m_precioTotalCompra;
-    }
-    
-    AgregarProducto(producto){
+ 
 
 
-        if (carrito.m_listaDeProductos.includes(producto)) {    
+function Producto(id, nombre, precio){
 
-            this.DevolverProducto(producto);
-
-            producto.m_cantidad++;
-                
-        }
-        else{
-            
-            this.m_listaDeProductos.push(producto);
-            
-        }
-
-    }
-
-    QuitarProducto(producto){
-
-        if (carrito.m_listaDeProductos.includes(producto)) {    
-
-            if (this.DevolverProducto(producto).m_cantidad >1 )  {
-            
-                producto.m_cantidad--;
-
-            }
-            else{
-    
-                let index = this.m_listaDeProductos.indexOf(producto);
-                console.log(index);
-                this.m_listaDeProductos.splice(index, 1);
-                
-            }            
-   
-        }
-        else{
-            console.log("no hay producto: " + producto.m_nombre);
-        }
-        
-    }
-
-    DevolverMontoTotalCarrito(){
-
-        let montoTotal =0;
-
-        for (const i of this.m_listaDeProductos) {
-            
-            montoTotal += i.m_precio * i.m_cantidad;
-        }
-
-        return montoTotal;
-    }
-
-    DevolverProducto(id){
-
-        if(this.m_listaDeProductos.find(prod => prod.m_id == id)){
-
-            return producto;
-        }
-        else{
-            console.log("no existe");
-        }
-
-    }
-
-}
-class Producto{
-
-    constructor(id, nombre, precio){
-        
         this.m_id = id;
         this.m_nombre = nombre;
         this.m_precio = precio;
         this.m_cantidad = 1;
-    }
-
 }
-
-let productosEnVenta = [];
-
-const carrito = new Carrito();
 
 const cacerola = new Producto(1, "Cacerola", "$100");
 const Sarten = new Producto(2, "Sarten", "$200");
 const cacerolita = new Producto(3, "Cacerolita", "$500");
 const bifera = new Producto(4, "Bifera", "$600");
 
-productosEnVenta=[
+
+let productosEnCarrito=[
+    cacerola
+];
+
+let productosEnVenta=[
     cacerola,
     Sarten,
     cacerolita,
@@ -103,6 +27,8 @@ productosEnVenta=[
 ]
 
 function DesplegarProductos(){
+
+
     
     let tabla = document.getElementById("tabla");
 
@@ -133,6 +59,61 @@ function DesplegarProductos(){
     }
 }
 
+
+function AgregarProducto(id){
+
+
+}
+
+function QuitarProducto(producto){
+
+    if (carrito.m_listaDeProductos.includes(producto)) {    
+
+        if (this.DevolverProducto(producto).m_cantidad >1 )  {
+        
+            producto.m_cantidad--;
+
+        }
+        else{
+
+            let index = this.m_listaDeProductos.indexOf(producto);
+            console.log(index);
+            this.m_listaDeProductos.splice(index, 1);
+            
+        }            
+
+    }
+    else{
+        console.log("no hay producto: " + producto.m_nombre);
+    }
+    
+}
+
+function DevolverMontoTotalCarrito(){
+
+    let montoTotal =0;
+
+    for (const i of this.m_listaDeProductos) {
+        
+        montoTotal += i.m_precio * i.m_cantidad;
+    }
+
+    return montoTotal;
+}
+
+function DevolverProducto(id){
+
+    if(this.m_listaDeProductos.find(prod => prod.m_id == id)){
+
+        return producto;
+    }
+    else{
+        console.log("no existe");
+    }
+
+}
+
+
 function GetBtnAgregar(){
 
     const btnAgregar = document.getElementsByClassName("btnAgregarCarrito");
@@ -159,8 +140,15 @@ function GetBtnQuitar(){
 function AgregarAlCarrito(e){
 
     const btn = e.target;
-    const id = btn.getAttribute("id");    
+    const id = btn.getAttribute("id"); 
+    console.log(id);
+    
+    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+    console.log(productoEnVenta);
 
+    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
+    console.log(productoEncarrito);
+    
 }
 
 function QuitarCarrito(e){
