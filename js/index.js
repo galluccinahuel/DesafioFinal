@@ -12,9 +12,9 @@ const Sarten = new Producto(2, "Sarten", "200");
 const cacerolita = new Producto(3, "Cacerolita", "500");
 const bifera = new Producto(4, "Bifera", "600");
 
-
-
 let productosEnCarrito=[];
+
+let carrito;
 
 let productosEnVenta=[
     cacerola,
@@ -22,6 +22,21 @@ let productosEnVenta=[
     cacerolita,
     bifera,
 ]
+
+console.log(productosEnCarrito);
+
+if (JSON.parse(localStorage.getItem("carrito"))) {
+        
+    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+}else{
+
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
+    console.log(productosEnCarrito);
+}
+
+
 
 function DesplegarProductos(){
 
@@ -69,16 +84,66 @@ function DevolverMontoTotalCarrito(){
 
 }
 
-function DevolverProducto(id){
 
-    if(this.m_listaDeProductos.find(prod => prod.m_id == id)){
-
-        return producto;
+function AgregarAlCarrito(e){
+    
+    const btn = e.target;
+    const id = btn.getAttribute("id"); 
+    
+    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+    
+    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
+    
+    if (productoEncarrito) {
+        
+        productoEnVenta.m_cantidad++;
+        console.log("Sumado");
     }
     else{
-        console.log("no existe");
+        
+        productosEnCarrito.push(productoEnVenta);
+        console.log("agregado");
     }
+    console.log(productosEnCarrito);
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+}
 
+function QuitarCarrito(e){
+    
+    const btn = e.target;
+    const id = btn.getAttribute("id");
+    
+    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+    
+    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
+    
+    if (productoEncarrito) {
+        
+        let cantidadDeProducto = productoEncarrito.m_cantidad;
+        console.log("cantidad: " + cantidadDeProducto);
+        
+        if (cantidadDeProducto > 1) {
+            
+            productoEnVenta.m_cantidad--;
+            console.log("Restado");
+            
+        }
+        else{
+            
+            let index = productosEnCarrito.indexOf(productoEncarrito);
+            console.log("index:" + index);
+            productosEnCarrito.splice(index, 1);        
+        }
+    }
+    else{
+        
+        console.log("producto no existe");
+        
+    }
+    console.log(productosEnCarrito);
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+
+    
 }
 
 function GetBtnAgregar(){
@@ -103,69 +168,8 @@ function GetBtnQuitar(){
 
 }
 
-function AgregarAlCarrito(e){
-
-    const btn = e.target;
-    const id = btn.getAttribute("id"); 
-    
-    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
-
-    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-
-    if (productoEncarrito) {
-        
-        productoEnVenta.m_cantidad++;
-        console.log("Sumado");
-    }
-    else{
-        
-        productosEnCarrito.push(productoEnVenta);
-        console.log("agregado");
-    }
-    console.log(productosEnCarrito);
-}
-
-function QuitarCarrito(e){
-
-    const btn = e.target;
-    const id = btn.getAttribute("id");
-
-    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
-
-    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-
-    if (productoEncarrito) {
-        
-        let cantidadDeProducto = productoEncarrito.m_cantidad;
-        console.log("cantidad: " + cantidadDeProducto);
-
-        if (cantidadDeProducto > 1) {
-            
-            productoEnVenta.m_cantidad--;
-            console.log("Restado");
-
-        }
-        else{
-        
-            let index = productosEnCarrito.indexOf(productoEncarrito);
-            console.log("index:" + index);
-            productosEnCarrito.splice(index, 1);        
-        }
-    }
-    else{
-
-        console.log("producto no existe");
-
-    }
-    console.log(productosEnCarrito);
-
-}
-
 let botonR = document.getElementById("botonR");
 botonR.addEventListener("click", DevolverMontoTotalCarrito);
-
-
-
 
 
 DesplegarProductos();
