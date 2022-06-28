@@ -1,6 +1,4 @@
  
-
-
 function Producto(id, nombre, precio){
 
         this.m_id = id;
@@ -9,15 +7,14 @@ function Producto(id, nombre, precio){
         this.m_cantidad = 1;
 }
 
-const cacerola = new Producto(1, "Cacerola", "$100");
-const Sarten = new Producto(2, "Sarten", "$200");
-const cacerolita = new Producto(3, "Cacerolita", "$500");
-const bifera = new Producto(4, "Bifera", "$600");
+const cacerola = new Producto(1, "Cacerola", "100");
+const Sarten = new Producto(2, "Sarten", "200");
+const cacerolita = new Producto(3, "Cacerolita", "500");
+const bifera = new Producto(4, "Bifera", "600");
 
 
-let productosEnCarrito=[
-    cacerola
-];
+
+let productosEnCarrito=[];
 
 let productosEnVenta=[
     cacerola,
@@ -59,46 +56,17 @@ function DesplegarProductos(){
     }
 }
 
+function DevolverMontoTotalCarrito(){    
 
-function AgregarProducto(id){
-
-
-}
-
-function QuitarProducto(producto){
-
-    if (carrito.m_listaDeProductos.includes(producto)) {    
-
-        if (this.DevolverProducto(producto).m_cantidad >1 )  {
-        
-            producto.m_cantidad--;
-
-        }
-        else{
-
-            let index = this.m_listaDeProductos.indexOf(producto);
-            console.log(index);
-            this.m_listaDeProductos.splice(index, 1);
-            
-        }            
-
-    }
-    else{
-        console.log("no hay producto: " + producto.m_nombre);
-    }
-    
-}
-
-function DevolverMontoTotalCarrito(){
-
-    let montoTotal =0;
-
-    for (const i of this.m_listaDeProductos) {
+    let montoTotal = 0;
+    console.log(productosEnCarrito);
+    for (const i of productosEnCarrito) {
         
         montoTotal += i.m_precio * i.m_cantidad;
-    }
 
-    return montoTotal;
+    }
+    console.log(montoTotal);
+
 }
 
 function DevolverProducto(id){
@@ -112,7 +80,6 @@ function DevolverProducto(id){
     }
 
 }
-
 
 function GetBtnAgregar(){
 
@@ -136,15 +103,12 @@ function GetBtnQuitar(){
 
 }
 
-
 function AgregarAlCarrito(e){
 
     const btn = e.target;
     const id = btn.getAttribute("id"); 
-
     
     let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
-
 
     let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
 
@@ -158,14 +122,50 @@ function AgregarAlCarrito(e){
         productosEnCarrito.push(productoEnVenta);
         console.log("agregado");
     }
+    console.log(productosEnCarrito);
 }
 
 function QuitarCarrito(e){
 
     const btn = e.target;
     const id = btn.getAttribute("id");
+
+    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+
+    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
+
+    if (productoEncarrito) {
+        
+        let cantidadDeProducto = productoEncarrito.m_cantidad;
+        console.log("cantidad: " + cantidadDeProducto);
+
+        if (cantidadDeProducto > 1) {
+            
+            productoEnVenta.m_cantidad--;
+            console.log("Restado");
+
+        }
+        else{
+        
+            let index = productosEnCarrito.indexOf(productoEncarrito);
+            console.log("index:" + index);
+            productosEnCarrito.splice(index, 1);        
+        }
+    }
+    else{
+
+        console.log("producto no existe");
+
+    }
     console.log(productosEnCarrito);
+
 }
+
+let botonR = document.getElementById("botonR");
+botonR.addEventListener("click", DevolverMontoTotalCarrito);
+
+
+
 
 
 DesplegarProductos();
