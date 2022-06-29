@@ -5,7 +5,7 @@ function Producto(id, nombre, precio){
         this.m_nombre = nombre;
         this.m_precio = precio;
         this.m_cantidad = 1;
-        this.m_img = "img/misc/SET UTENSILIOS DE USO GENERAL ROSA.png"
+        this.m_img = "../img/misc/SET UTENSILIOS DE USO GENERAL ROSA.png"
 }
 
 const cacerola = new Producto(1, "Cacerola", "100");
