@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/estilos.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap" rel="stylesheet">
-        <link rel="icon" href="../img/logopng.png">
-        <title>Carrito - Todo a la Essen</title>
-    </head>
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" href="../img/logopng.png">
+    <title>Productos - Todo a la Essen</title>
+</head>
+<body id="mainGrid">
     <header id="navBar">
         <img src="../img/logopng.png" alt="logo">
         <ul>
@@ -20,11 +20,19 @@
             <li><a href="recetas.html">Recetas</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="sobreMi.html">Sobre mi</a></li>
-            <li><a href="Carrito.html">Sobre mi</a></li>
+            <li><a href="Carrito.html">Carrito</a></li>
         </ul>
     </header>
     <main id="main">
-        
+        <h1 class="titulo">
+            Carrito
+        </h1>
+        <div style="background-color: gray; height:200px; display: flex; align-items: center; justify-content: center;">
+            <input id="botonR"type="button" value="Comprar"style="height: 100px; width:200px; border: 5px solid #FFBCBC;">
+            <p id="Resultado" style="color: white; height:100px; width: 200px; text-align: center;border: 5px solid #FFBCBC; padding: 30px 0px;">
+                $0
+            </p>
+        </div>
     </main>
     <footer id="footer">
         <title>

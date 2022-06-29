@@ -5,6 +5,7 @@ function Producto(id, nombre, precio){
         this.m_nombre = nombre;
         this.m_precio = precio;
         this.m_cantidad = 1;
+        this.m_img = "/img/misc/SET UTENSILIOS DE USO GENERAL ROSA.png"
 }
 
 const cacerola = new Producto(1, "Cacerola", "100");
@@ -23,17 +24,19 @@ let productosEnVenta=[
     bifera,
 ]
 
-console.log(productosEnCarrito);
+function ImplementarStorage(){
+    
+    if (JSON.parse(localStorage.getItem("carrito"))) {
+            
+        productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
+    
+    }else{
+    
+        localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+        productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
+        console.log(productosEnCarrito);
+    }
 
-if (JSON.parse(localStorage.getItem("carrito"))) {
-        
-    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
-
-}else{
-
-    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
-    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
-    console.log(productosEnCarrito);
 }
 
 
@@ -48,6 +51,7 @@ function DesplegarProductos(){
         
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
+        let imgTabla = document.createElement("img");
         let inputAgregar = document.createElement("input");
         let inputQuitar = document.createElement("input");
     
@@ -55,13 +59,16 @@ function DesplegarProductos(){
         inputQuitar.type = "button";
         inputAgregar.className = "btnAgregarCarrito"
         inputQuitar.className = "btnQuitarCarrito"
+
         inputAgregar.id = i.m_id;
         inputQuitar.id = i.m_id;
         
         divCardTabla.className = "celda";
         tabla.append(divCardTabla);
         divCardTabla.append(divCeldaTabla);
-        divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p><p>"+i.m_precio+"</p>";
+        divCardTabla.append(imgTabla);
+        imgTabla.src = i.m_img;
+        divCeldaTabla.innerHTML = "<p>"+" "+i.m_nombre+"-"+"</p> <p>"+"$"+i.m_precio+"</p>";
         divCeldaTabla.append(inputAgregar);
         divCeldaTabla.append(inputQuitar);
     
@@ -83,7 +90,6 @@ function DevolverMontoTotalCarrito(){
     console.log(montoTotal);
 
 }
-
 
 function AgregarAlCarrito(e){
     
@@ -168,10 +174,8 @@ function GetBtnQuitar(){
 
 }
 
-let botonR = document.getElementById("botonR");
-botonR.addEventListener("click", DevolverMontoTotalCarrito);
 
-
+ImplementarStorage();
 DesplegarProductos();
 GetBtnAgregar();
 GetBtnQuitar()
