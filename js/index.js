@@ -1,27 +1,44 @@
  
-function Producto(id, nombre, precio){
+function Producto(id, nombre, precio, img){
 
         this.m_id = id;
         this.m_nombre = nombre;
         this.m_precio = precio;
         this.m_cantidad = 1;
-        this.m_img = "../img/misc/SET UTENSILIOS DE USO GENERAL ROSA.png"
+        this.m_img = img;
 }
 
-const cacerola = new Producto(1, "Cacerola", "100");
-const Sarten = new Producto(2, "Sarten", "200");
-const cacerolita = new Producto(3, "Cacerolita", "500");
-const bifera = new Producto(4, "Bifera", "600");
+const Bifera = new Producto(1, "Bifera", "30000","../img/misc/Bifera.png");
+const Cacerola20cmAqua = new Producto(2, "Cacerola20cmAqua", "20000","../img/misc/Cacerola20cmAqua.png");
+const Cacerola24cmRosa = new Producto(3, "Cacerola24cmRosa", "25000","../img/misc/Cacerola24cmRosa.png");
+const Cuadrada24cmAqua = new Producto(4, "Cuadrada24cmAqua", "25000","../img/misc/Cuadrada24cmAqua.png");
+const Cuadrada24cmTerra = new Producto(5, "Cuadrada24cmTerra", "35000","../img/misc/Cuadrada24cmTerra.png");
+const FlipMangoRosa = new Producto(6, "FlipMangoRosa", "38000","../img/misc/FlipMangoRosa.png");
+const SarténChef = new Producto(7, "SarténChef", "21000","../img/misc/SarténChef.png");
+const SarténContemporánea24cmRosa = new Producto(8, "SarténContemporánea24cmRosa", "30000","../img/misc/SarténContemporánea24cmRosapng");
+const SartenNUIT = new Producto(9, "SartenNUIT", "25000","../img/misc/SartenNUIT.png");
+const Savarin24 = new Producto(10, "Savarin24", "12000","../img/misc/Savarin24.png");
+const UtensillosRosa = new Producto(11, "UtensillosRosa", "8000","../img/misc/UtensillosRosa.png");
+const CacerolaMoka = new Producto(12, "CacerolaMoka", "24000","../img/misc/CacerolaMoka.png");
+const SarténAqua18cm = new Producto(13, "SarténAqua18cm", "18000","../img/misc/SarténAqua18cm.png");
 
 let productosEnCarrito=[];
 
 let carrito;
 
 let productosEnVenta=[
-    cacerola,
-    Sarten,
-    cacerolita,
-    bifera,
+    Bifera,
+    Cacerola20cmAqua,
+    Cacerola24cmRosa,
+    Cuadrada24cmAqua,
+    Cuadrada24cmTerra,
+    FlipMangoRosa,
+    SarténChef,
+    SartenNUIT,
+    Savarin24,
+    UtensillosRosa,
+    CacerolaMoka,
+    SarténAqua18cm
 ]
 
 function ImplementarStorage(){
@@ -39,12 +56,8 @@ function ImplementarStorage(){
 
 }
 
-
-
 function DesplegarProductos(){
 
-
-    
     let tabla = document.getElementById("tabla");
 
     for (const i of productosEnVenta) {
@@ -52,6 +65,7 @@ function DesplegarProductos(){
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
         let imgTabla = document.createElement("img");
+        let divBtnTabla = document.createElement("div");
         let inputAgregar = document.createElement("input");
         let inputQuitar = document.createElement("input");
     
@@ -63,14 +77,20 @@ function DesplegarProductos(){
         inputAgregar.id = i.m_id;
         inputQuitar.id = i.m_id;
         
+
+        divBtnTabla.className= "divBtn";
         divCardTabla.className = "celda";
         tabla.append(divCardTabla);
         divCardTabla.append(divCeldaTabla);
         divCardTabla.append(imgTabla);
+
+
+        divCardTabla.append(divBtnTabla);
+        divBtnTabla.append(inputAgregar);
+        divBtnTabla.append(inputQuitar);
+
         imgTabla.src = i.m_img;
-        divCeldaTabla.innerHTML = "<p>"+" "+i.m_nombre+"-"+"</p> <p>"+"$"+i.m_precio+"</p>";
-        divCeldaTabla.append(inputAgregar);
-        divCeldaTabla.append(inputQuitar);
+        divCeldaTabla.innerHTML = "<p>"+" "+i.m_nombre+" -"+"</p> <p>"+"$"+i.m_precio+"</p>";
     
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";

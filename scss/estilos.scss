@@ -7,6 +7,7 @@
     box-sizing: border-box;
     background-color: map-get($colores, colorNegro);
     color: map-get($colores, colorFuente);
+    font-family: 'Roboto', sans-serif;
 }
 
 .titulo{
@@ -162,35 +163,34 @@
 
 .table{
     display: grid;
-    grid-template-columns: repeat(4, 250px);
-    grid-template-rows: repeat(4,250px);
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(5,350px);
     justify-content: center;
-    gap: 5px;
-
-    
+    gap: 10px;   
 }
 
 .celda{
-    @include sizes(250px, 250px);
+    @include sizes(inherit, inherit);
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 2px solid map-get($colores,colorRosa);
     img{
-        @include sizes(220px, 180px);
+        @include sizes(300px, 220px );
+        background-color: map-get($colores , colorRosa);
     }
     div{
-        @include sizes(250px, 70px);
+        @include sizes(295px, 70px);
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        background-color: map-get($colores,colorRosa);
+        background-color: map-get($colores, colorGris);
         input{
-            @include sizes(50%, 50%);
+            @include sizes(40%, 50%);
             border-radius: 10px;
             box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
-            background-color: map-get($colores,colorBlanco);;
+            background-color: map-get($colores,colorRosa);;
             color: map-get($colores,colorNegro);
             cursor: pointer;
 
@@ -198,12 +198,24 @@
         input:hover{
             background-color: map-get($colores,colorNegro);
             color: map-get($colores,colorRosa);
+            border-style: 1px solid map-get($colores , colorRosa );
         }
         p{
-            background-color: map-get($colores,colorRosa);
-            color: map-get($colores,colorNegro);
-            font-weight: bold;
+            background-color: map-get($colores,colorGris);
+            color: map-get($colores,colorRosa);
+            text-transform: uppercase;
+            font-size: 18px;
+
         }
+    }
+    .divBtn{
+        @include sizes(295px, 70px);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: map-get($colores,colorRosa);
+
     }
 }
 
@@ -357,8 +369,8 @@
 
     #navBar{
         grid-area: navBar;
+        @include sizes(90%, 10vh);
         background-color: map-get($colores,colorRosa);
-        @include sizes(100%, 10vh);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -449,7 +461,7 @@
     .btn{
         @include sizes(30%, 30px);
         margin: 1rem;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
     }
     
@@ -457,7 +469,7 @@
     .btn--1{
         @include sizes(40%, 30px);
         margin: 1rem;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
         background-color: red;
     
@@ -466,7 +478,7 @@
     .btn--2{
         @include sizes(40%, 30px);
         margin: 1rem;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow:  5px 5px 15px rgba(0,0,0,0.9);
         background-color: green;
     
@@ -484,18 +496,43 @@
     
     .table{
         display: grid;
-        grid-template-columns: repeat(2, 150px);
-        grid-template-rows: repeat(15, 150px);
-        gap: 5px;
-        margin-bottom: 2rem;
+        grid-template-columns: repeat(1, 300px);
+        grid-template-rows: repeat(5, 300px);
+        gap: 10px;
+        margin-bottom: 10rem;
     }
     
     .celda{
-        @include sizes(150px, 150px);
+        @include sizes(300px, 300px);
         border: 2px solid map-get($colores,colorRosa);
+        border-radius: 15px;
         img{
-            @include sizes(140px, 140px);
+            @include sizes(240px, 240px);
         }
+        div{
+            @include sizes(inherit, 100px);
+            border-radius: inherit;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #FFBCBC;
+            input{
+                @include sizes(30%, 40%);
+                border-radius: 10px;
+                box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+                background-color: white;
+                color: black;
+                cursor: pointer;
+
+            }
+            p{
+                background-color: #FFBCBC;
+                color: black;
+                font-weight: bold
+            }
+        }
+
     }
     
     
