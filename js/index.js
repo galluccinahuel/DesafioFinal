@@ -43,8 +43,6 @@ let productosEnVenta=[
 ]
 
 
-
-
 function ImplementarStorage(){
     
     if (JSON.parse(localStorage.getItem("carrito"))) {
@@ -55,7 +53,6 @@ function ImplementarStorage(){
     
         localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
         productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
-        console.log(productosEnCarrito);
     }
 
 }
@@ -66,6 +63,8 @@ function DesplegarProductos(){
 
     for (const i of productosEnVenta) {
         
+        
+
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
         let imgTabla = document.createElement("img");
@@ -112,10 +111,9 @@ function ActualizarNumeroCarrito() {
         const element = productosEnCarrito[i];
         cantidadDeProducto += element.m_cantidad;
     }
-    
+
     precioP.innerHTML = cantidadDeProducto;
 }
-
 
 function DevolverMontoTotalCarrito(){    
 
@@ -138,7 +136,7 @@ function AgregarAlCarrito(e){
     let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
     
     let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-    
+      
     if (productoEncarrito) {
         
         productoEnVenta.m_cantidad++;
@@ -147,8 +145,10 @@ function AgregarAlCarrito(e){
         
         productosEnCarrito.push(productoEnVenta);
     }
-
+    
     ActualizarNumeroCarrito();
+
+    showToast();
 
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
 
@@ -215,28 +215,24 @@ function GetBtnQuitar(){
 const showToast = () =>{
 
     Toastify({
-        text: "This is a toast",
-        duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
+        text: "Agregaste Producto al Carrito",
+        duration: 5000,
+        destination: "",
         newWindow: true,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          background: "#FFBCBC",
+          color: "black",
+          with: "200px",
+          height: "100px",
         },
         onClick: function(){} // Callback after click
       }).showToast();
 
 }
-
-/*
-let prueba = document.getElementById("prueba");
-prueba.onclick = showToast;
-*/
-
-
 
 
 ImplementarStorage();
