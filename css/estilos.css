@@ -45,7 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0 0  15px 15px; }
+  position: fixed;
+  top: 0px; }
   #navBar img {
     width: auto;
     height: inherit; }
@@ -67,13 +68,18 @@
           height: 40px;
           background-color: #FFBCBC; }
 
+#sticky {
+  position: sticky;
+  top: 1px;
+  display: inline-block; }
+
 #precio {
   width: 30px;
   height: 30px;
   font-size: small;
   position: absolute;
-  right: 8px;
-  top: 60px;
+  right: 5px;
+  top: 40px;
   background-color: black;
   border-radius: 100%;
   display: flex;
@@ -81,7 +87,8 @@
   align-items: center; }
 
 #main {
-  grid-area: main; }
+  grid-area: main;
+  margin-top: 150px; }
 
 .banner {
   width: 100%;

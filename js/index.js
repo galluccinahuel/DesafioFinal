@@ -63,7 +63,7 @@ function DesplegarProductos(){
 
     for (const i of productosEnVenta) {
         
-        
+        const {m_id, m_nombre, m_precio, m_cantidad, m_img} = i;
 
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
@@ -77,8 +77,8 @@ function DesplegarProductos(){
         inputAgregar.className = "btnAgregarCarrito"
         inputQuitar.className = "btnQuitarCarrito"
 
-        inputAgregar.id = i.m_id;
-        inputQuitar.id = i.m_id;
+        inputAgregar.id = m_id;
+        inputQuitar.id = m_id;
         
 
         divBtnTabla.className= "divBtn";
@@ -92,8 +92,8 @@ function DesplegarProductos(){
         divBtnTabla.append(inputAgregar);
         divBtnTabla.append(inputQuitar);
 
-        imgTabla.src = i.m_img;
-        divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p> <p>"+"$"+i.m_precio+"</p>";
+        imgTabla.src = m_img;
+        divCeldaTabla.innerHTML = "<p>"+m_nombre+"</p> <p>"+"$"+m_precio+"</p>";
     
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";
