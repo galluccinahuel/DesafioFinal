@@ -46,6 +46,7 @@
         display: flex;
         align-items: center;
         background-color: inherit;
+        padding-right: 50px;
         
         li{
             margin: 10px 10px;
@@ -54,6 +55,7 @@
             list-style: none;
             a{
                 font-size: 24px;
+                font-weight: bold;
                 text-decoration: none;
                 background-color: inherit;
                 img{
@@ -86,6 +88,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+#Pcarrito{
+    @include sizes(100vw, 50vh);
+    border: 2px solid pink;
     
 }
 
@@ -197,7 +205,7 @@
     grid-template-columns: repeat(3, 300px);
     grid-template-rows: repeat(5,350px);
     justify-content: center;
-    gap: 10px;   
+    gap: 15px;   
 }
 
 .celda{
@@ -211,7 +219,7 @@
         background-color: map-get($colores , colorRosa);
     }
     div{
-        @include sizes(295px, 70px);
+        @include sizes(300px, 70px);
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -224,6 +232,7 @@
             background-color: map-get($colores,colorRosa);;
             color: map-get($colores,colorNegro);
             cursor: pointer;
+            font-weight: bold;
 
         }
         input:hover{
@@ -240,12 +249,12 @@
         }
     }
     .divBtn{
-        @include sizes(295px, 70px);
+        @include sizes(300px, 70px);
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        background-color: map-get($colores,colorRosa);
+        background-color: map-get($colores,colorGris);
 
     }
 }

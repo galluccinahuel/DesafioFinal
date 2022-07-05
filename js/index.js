@@ -25,8 +25,6 @@ const SarténAqua18cm = new Producto(13, "Sartén Aqua 18cm", "18000","../img/mi
 
 let productosEnCarrito=[];
 
-let carrito;
-
 let productosEnVenta=[
     Bifera,
     Cacerola20cmAqua,
@@ -86,13 +84,12 @@ function DesplegarProductos(){
         tabla.append(divCardTabla);
         divCardTabla.append(divCeldaTabla);
         divCardTabla.append(imgTabla);
-
-
         divCardTabla.append(divBtnTabla);
+        imgTabla.src = m_img;
+
         divBtnTabla.append(inputAgregar);
         divBtnTabla.append(inputQuitar);
 
-        imgTabla.src = m_img;
         divCeldaTabla.innerHTML = "<p>"+m_nombre+"</p> <p>"+"$"+m_precio+"</p>";
     
         inputAgregar.value = "Agregar";
