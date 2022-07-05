@@ -143,12 +143,12 @@ function AgregarAlCarrito(e){
         productosEnCarrito.push(productoEnVenta);
     }
     
-    ActualizarNumeroCarrito();
-
+    
     showToast();
-
+    
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
-
+    
+    ActualizarNumeroCarrito();
 }
 
 function QuitarCarrito(e){
@@ -182,8 +182,8 @@ function QuitarCarrito(e){
     }
 
 
-    ActualizarNumeroCarrito();
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+    ActualizarNumeroCarrito();
     
 }
 
