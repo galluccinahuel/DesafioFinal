@@ -34,10 +34,13 @@ else{
         
         const {m_id, m_nombre, m_precio, m_cantidad, m_img} = i;
         
-        carrito.innerHTML += "<div><p>"+m_nombre+"</p></div>";
+        carrito.innerHTML += "<div class='divCarrito'><p>"+m_nombre+"</p><p>"+m_cantidad+"</p><p>"+'$'+m_precio+"</p></div>";
     }
 
-
+    const divPrecioTotal = document.createElement("div");
+    divPrecioTotal.className = "divCarrito";
+    divPrecioTotal.innerHTML = "<p>Precio Total:</p><p>"+'$'+TotalCarrito()+"</>";
+    carrito.append(divPrecioTotal);
 }
 
 

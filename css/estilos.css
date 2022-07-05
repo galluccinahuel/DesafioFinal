@@ -89,9 +89,26 @@
   align-items: center; }
 
 #Pcarrito {
-  width: 100vw;
-  height: 50vh;
-  border: 2px solid pink; }
+  width: 60vw;
+  height: auto;
+  border: 2px solid pink;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.divCarrito {
+  width: 80%;
+  height: auto;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid pink;
+  display: flex;
+  justify-content: space-between; }
+  .divCarrito p {
+    text-align: center; }
 
 #main {
   grid-area: main;

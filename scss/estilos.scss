@@ -92,9 +92,27 @@
 }
 
 #Pcarrito{
-    @include sizes(100vw, 50vh);
+    @include sizes(60vw, auto);
     border: 2px solid pink;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
+}
+
+.divCarrito{
+    @include sizes(80%, auto);
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid pink;
+    display: flex;
+    justify-content: space-between;
+    p{
+        text-align: center;
+    }
 }
 
 #main{
