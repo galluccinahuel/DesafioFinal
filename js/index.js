@@ -1,4 +1,5 @@
- 
+
+
 function Producto(id, nombre, precio, img){
 
         this.m_id = id;
@@ -9,18 +10,18 @@ function Producto(id, nombre, precio, img){
 }
 
 const Bifera = new Producto(1, "Bifera", "30000","../img/misc/Bifera.png");
-const Cacerola20cmAqua = new Producto(2, "Cacerola20cmAqua", "20000","../img/misc/Cacerola20cmAqua.png");
-const Cacerola24cmRosa = new Producto(3, "Cacerola24cmRosa", "25000","../img/misc/Cacerola24cmRosa.png");
-const Cuadrada24cmAqua = new Producto(4, "Cuadrada24cmAqua", "25000","../img/misc/Cuadrada24cmAqua.png");
-const Cuadrada24cmTerra = new Producto(5, "Cuadrada24cmTerra", "35000","../img/misc/Cuadrada24cmTerra.png");
-const FlipMangoRosa = new Producto(6, "FlipMangoRosa", "38000","../img/misc/FlipMangoRosa.png");
-const SarténChef = new Producto(7, "SarténChef", "21000","../img/misc/SarténChef.png");
-const SarténContemporánea24cmRosa = new Producto(8, "SarténContemporánea24cmRosa", "30000","../img/misc/SarténContemporánea24cmRosapng");
-const SartenNUIT = new Producto(9, "SartenNUIT", "25000","../img/misc/SartenNUIT.png");
-const Savarin24 = new Producto(10, "Savarin24", "12000","../img/misc/Savarin24.png");
-const UtensillosRosa = new Producto(11, "UtensillosRosa", "8000","../img/misc/UtensillosRosa.png");
-const CacerolaMoka = new Producto(12, "CacerolaMoka", "24000","../img/misc/CacerolaMoka.png");
-const SarténAqua18cm = new Producto(13, "SarténAqua18cm", "18000","../img/misc/SarténAqua18cm.png");
+const Cacerola20cmAqua = new Producto(2, "Cacerola 20cm Aqua", "20000","../img/misc/Cacerola20cmAqua.png");
+const Cacerola24cmRosa = new Producto(3, "Cacerola 24cm Rosa", "25000","../img/misc/Cacerola24cmRosa.png");
+const Cuadrada24cmAqua = new Producto(4, "Cuadrada 24cm Aqua", "25000","../img/misc/Cuadrada24cmAqua.png");
+const Cuadrada24cmTerra = new Producto(5, "Cuadrada 24cm Terra", "35000","../img/misc/Cuadrada24cmTerra.png");
+const FlipMangoRosa = new Producto(6, "Flip Mango Rosa", "38000","../img/misc/FlipMangoRosa.png");
+const SarténChef = new Producto(7, "Sartén Chef", "21000","../img/misc/SarténChef.png");
+const SarténContemporánea24cmRosa = new Producto(8, "Sartén Contemporánea 24cm Rosa", "30000","../img/misc/SarténContemporánea24cmRosapng");
+const SartenNUIT = new Producto(9, "Sarten NUIT", "25000","../img/misc/SartenNUIT.png");
+const Savarin24 = new Producto(10, "Savarin 24cm", "12000","../img/misc/Savarin24.png");
+const UtensillosRosa = new Producto(11, "Utensillos Rosa", "8000","../img/misc/UtensillosRosa.png");
+const CacerolaMoka = new Producto(12, "Cacerola Moka", "24000","../img/misc/CacerolaMoka.png");
+const SarténAqua18cm = new Producto(13, "Sartén Aqua 18cm", "18000","../img/misc/SarténAqua18cm.png");
 
 let productosEnCarrito=[];
 
@@ -40,6 +41,9 @@ let productosEnVenta=[
     CacerolaMoka,
     SarténAqua18cm
 ]
+
+
+
 
 function ImplementarStorage(){
     
@@ -90,13 +94,28 @@ function DesplegarProductos(){
         divBtnTabla.append(inputQuitar);
 
         imgTabla.src = i.m_img;
-        divCeldaTabla.innerHTML = "<p>"+" "+i.m_nombre+" -"+"</p> <p>"+"$"+i.m_precio+"</p>";
+        divCeldaTabla.innerHTML = "<p>"+i.m_nombre+"</p> <p>"+"$"+i.m_precio+"</p>";
     
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";
     
     }
 }
+
+function ActualizarNumeroCarrito() {
+
+    let precioP = document.getElementById("precio");
+
+    let cantidadDeProducto = 0;
+
+    for (let i = 0; i < productosEnCarrito.length; i++) {
+        const element = productosEnCarrito[i];
+        cantidadDeProducto += element.m_cantidad;
+    }
+    
+    precioP.innerHTML = cantidadDeProducto;
+}
+
 
 function DevolverMontoTotalCarrito(){    
 
@@ -123,15 +142,16 @@ function AgregarAlCarrito(e){
     if (productoEncarrito) {
         
         productoEnVenta.m_cantidad++;
-        console.log("Sumado");
     }
     else{
         
         productosEnCarrito.push(productoEnVenta);
-        console.log("agregado");
     }
-    console.log(productosEnCarrito);
+
+    ActualizarNumeroCarrito();
+
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+
 }
 
 function QuitarCarrito(e){
@@ -146,18 +166,15 @@ function QuitarCarrito(e){
     if (productoEncarrito) {
         
         let cantidadDeProducto = productoEncarrito.m_cantidad;
-        console.log("cantidad: " + cantidadDeProducto);
         
         if (cantidadDeProducto > 1) {
             
             productoEnVenta.m_cantidad--;
-            console.log("Restado");
             
         }
         else{
-            
+
             let index = productosEnCarrito.indexOf(productoEncarrito);
-            console.log("index:" + index);
             productosEnCarrito.splice(index, 1);        
         }
     }
@@ -166,9 +183,10 @@ function QuitarCarrito(e){
         console.log("producto no existe");
         
     }
-    console.log(productosEnCarrito);
-    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
 
+
+    ActualizarNumeroCarrito();
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
     
 }
 
@@ -193,6 +211,32 @@ function GetBtnQuitar(){
     }
 
 }
+
+const showToast = () =>{
+
+    Toastify({
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
+}
+
+/*
+let prueba = document.getElementById("prueba");
+prueba.onclick = showToast;
+*/
+
+
 
 
 ImplementarStorage();
