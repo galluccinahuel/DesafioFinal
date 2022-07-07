@@ -1,5 +1,4 @@
 
-
 function Producto(id, nombre, precio, img){
 
         this.m_id = id;
@@ -133,7 +132,9 @@ function AgregarAlCarrito(e){
     let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
     
     let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-      
+
+    
+    /*
     if (productoEncarrito) {
         
         productoEnVenta.m_cantidad++;
@@ -143,7 +144,10 @@ function AgregarAlCarrito(e){
         productosEnCarrito.push(productoEnVenta);
     }
     
-    
+    */
+
+    productosEnCarrito.find(product => product.m_id == productoEnVenta.m_id ) ?  productoEnVenta.m_cantidad++ : productosEnCarrito.push(productoEnVenta);
+
     showToast();
     
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
@@ -236,3 +240,5 @@ ImplementarStorage();
 DesplegarProductos();
 GetBtnAgregar();
 GetBtnQuitar()
+
+
