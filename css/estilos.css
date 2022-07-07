@@ -29,7 +29,7 @@
   text-align: center;
   padding: 1rem;
   margin: 1rem;
-  text-decoration: solid #FFBCBC underline; }
+  text-decoration: solid #F2D1D1 underline; }
 
 .mainGrid {
   display: grid;
@@ -39,7 +39,7 @@
 
 #navBar {
   grid-area: navBar;
-  background-color: #FFBCBC;
+  background-color: #F2D1D1;
   width: 100%;
   height: 10vh;
   display: flex;
@@ -68,7 +68,7 @@
         #navBar ul li a img {
           width: 40px;
           height: 40px;
-          background-color: #FFBCBC; }
+          background-color: #F2D1D1; }
 
 #sticky {
   position: sticky;
@@ -78,11 +78,13 @@
 #precio {
   width: 30px;
   height: 30px;
-  font-size: small;
+  font-size: medium;
   position: absolute;
   right: 5px;
   top: 40px;
-  background-color: black;
+  color: black;
+  font-weight: bold;
+  background-color: white;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -102,17 +104,22 @@
 .divCarrito {
   width: 80%;
   height: auto;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 800;
   margin: 5px;
   padding: 5px;
   border: 2px solid pink;
   display: flex;
   justify-content: space-between; }
   .divCarrito p {
-    text-align: center; }
+    text-align: center;
+    color: black;
+    background-color: white; }
 
 #main {
   grid-area: main;
-  margin-top: 150px; }
+  margin: 150px 0px; }
 
 .banner {
   width: 100%;
@@ -129,7 +136,7 @@
   align-items: center; }
 
 .card {
-  background-color: #FFBCBC;
+  background-color: #F2D1D1;
   width: 15%;
   height: 150px;
   margin: 2rem;
@@ -141,10 +148,10 @@
   border-radius: 15px; }
 
 .cardText {
-  background-color: #FFBCBC; }
+  background-color: #F2D1D1; }
 
 .card img {
-  background-color: #FFBCBC;
+  background-color: #F2D1D1;
   width: 50px;
   height: 50px; }
 
@@ -158,7 +165,7 @@
   align-items: center; }
 
 .form {
-  background-color: #FFBCBC;
+  background-color: #F2D1D1;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -170,7 +177,7 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
 
 .form label {
-  background-color: #FFBCBC; }
+  background-color: #F2D1D1; }
 
 .btn, .btn--1, .btn--2 {
   width: 50%;
@@ -207,11 +214,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #FFBCBC; }
+  border: 2px solid #F2D1D1; }
   .celda img {
     width: 300px;
     height: 220px;
-    background-color: #FFBCBC; }
+    background-color: #F2D1D1; }
   .celda div {
     width: 300px;
     height: 70px;
@@ -225,17 +232,18 @@
       height: 50%;
       border-radius: 10px;
       box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
-      background-color: #FFBCBC;
+      background-color: #F2D1D1;
       color: black;
       cursor: pointer;
-      font-weight: bold; }
+      font-size: medium;
+      font-weight: 600; }
     .celda div input:hover {
       background-color: black;
-      color: #FFBCBC;
-      border-style: 1px solid #FFBCBC; }
+      color: #F2D1D1;
+      border-style: 1px solid #F2D1D1; }
     .celda div p {
       background-color: #525558;
-      color: #FFBCBC;
+      color: #F2D1D1;
       text-transform: uppercase;
       font-size: 18px; }
   .celda .divBtn {
@@ -247,8 +255,18 @@
     align-items: center;
     background-color: #525558; }
 
+.tituloCarrito {
+  display: flex;
+  justify-content: space-between; }
+  .tituloCarrito p {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 15px;
+    text-decoration-line: underline; }
+
 #footer {
-  grid-area: footer; }
+  grid-area: footer;
+  margin: 50px 0px; }
 
 .copy p {
   color: white;
@@ -261,7 +279,7 @@
   display: flex;
   padding: 1rem;
   border-radius: 15px;
-  background-color: #FFBCBC;
+  background-color: #F2D1D1;
   justify-content: space-around;
   flex-wrap: wrap; }
 
@@ -352,7 +370,7 @@
     text-align: center;
     padding: 1rem;
     margin: 1rem;
-    text-decoration: solid #FFBCBC underline; }
+    text-decoration: solid #F2D1D1 underline; }
   .mainGrid {
     display: grid;
     grid-template-areas: "navBar" "main" "footer";
@@ -362,7 +380,7 @@
     grid-area: navBar;
     width: 90%;
     height: 10vh;
-    background-color: #FFBCBC;
+    background-color: #F2D1D1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -401,7 +419,7 @@
     justify-content: space-evenly;
     align-items: center; }
   .card {
-    background-color: #FFBCBC;
+    background-color: #F2D1D1;
     width: 15%;
     height: 150px;
     margin: 2rem;
@@ -420,7 +438,7 @@
     flex-direction: column;
     align-items: center; }
   .form {
-    background-color: #FFBCBC;
+    background-color: #F2D1D1;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -431,7 +449,7 @@
     margin-bottom: 4rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); }
   .form label {
-    background-color: #FFBCBC; }
+    background-color: #F2D1D1; }
   .btn, .btn--1, .btn--2 {
     width: 30%;
     height: 30px;
@@ -468,7 +486,7 @@
   .celda {
     width: 300px;
     height: 300px;
-    border: 2px solid #FFBCBC;
+    border: 2px solid #F2D1D1;
     border-radius: 15px; }
     .celda img {
       width: 240px;
