@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "nombre": "Bifera",
+        "precio": "30000",
+        "img": "../img/misc/Bifera.png"
+    },
+    {
+        "id": 2,
+        "nombre": "Cacerola 20cm Aqua",
+        "precio": "20000",
+        "img": "../img/misc/Cacerola20cmAqua.png"
+    },
+    {
+        "id": 3,
+        "nombre": "Cacerola 24cm Rosa",
+        "precio": "25000",
+        "img": "../img/misc/Cacerola24cmRosa.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Cuadrada 24cm Aqua",
+        "precio": "30000",
+        "img": "../img/misc/Cuadrada24cmAqua.png"
+    },
+    {
+        "id": 5,
+        "nombre": "Cuadrada 24cm Terra",
+        "precio": "25000",
+        "img": "../img/misc/Cuadrada24cmTerra.png"
+    },
+    {
+        "id": 6,
+        "nombre": "Flip Mango Rosa",
+        "precio": "38000",
+        "img": "../img/misc/FlipMangoRosa.png"
+    },
+    {
+        "id": 7,
+        "nombre": "Sartén Chef",
+        "precio": "21000",
+        "img": "../img/misc/SarténChef.png"
+    },
+    {
+        "id": 8,
+        "nombre": "Sartén Contemporánea 24cm Rosa",
+        "precio": "30000",
+        "img": "../img/misc/SarténContemporánea24cmRosa.png"
+    },
+    {
+        "id": 9,
+        "nombre": "Sarten NUIT",
+        "precio": "25000",
+        "img": "../img/misc/SartenNUIT.png"
+    },
+    {
+        "id": 10,
+        "nombre": "Savarin 24cm",
+        "precio": "12000",
+        "img": "../img/misc/Savarin24.png"
+    },
+    {
+        "id": 11,
+        "nombre": "Utensillos Rosa",
+        "precio": "8000",
+        "img": "../img/misc/UtensillosRosa.png"
+    },
+    {
+        "id": 12,
+        "nombre": "Cacerola Moka",
+        "precio": "24000",
+        "img": "../img/misc/CacerolaMoka.png"
+    },
+    {
+        "id": 13,
+        "nombre": "Sartén Aqua 18cm",
+        "precio": "18000",
+        "img": "../img/misc/SarténAqua18cm.png"
+    }
+]

@@ -15,7 +15,7 @@ const Cuadrada24cmAqua = new Producto(4, "Cuadrada 24cm Aqua", "25000","../img/m
 const Cuadrada24cmTerra = new Producto(5, "Cuadrada 24cm Terra", "35000","../img/misc/Cuadrada24cmTerra.png");
 const FlipMangoRosa = new Producto(6, "Flip Mango Rosa", "38000","../img/misc/FlipMangoRosa.png");
 const SarténChef = new Producto(7, "Sartén Chef", "21000","../img/misc/SarténChef.png");
-const SarténContemporánea24cmRosa = new Producto(8, "Sartén Contemporánea 24cm Rosa", "30000","../img/misc/SarténContemporánea24cmRosapng");
+const SarténContemporánea24cmRosa = new Producto(8, "Sartén Contemporánea 24cm Rosa", "30000","../img/misc/SarténContemporánea24cmRosa.png");
 const SartenNUIT = new Producto(9, "Sarten NUIT", "25000","../img/misc/SartenNUIT.png");
 const Savarin24 = new Producto(10, "Savarin 24cm", "12000","../img/misc/Savarin24.png");
 const UtensillosRosa = new Producto(11, "Utensillos Rosa", "8000","../img/misc/UtensillosRosa.png");
@@ -58,6 +58,7 @@ function DesplegarProductos(){
 
     let tabla = document.getElementById("tabla");
 
+/*
     for (const i of productosEnVenta) {
         
         const {m_id, m_nombre, m_precio, m_cantidad, m_img} = i;
@@ -95,7 +96,56 @@ function DesplegarProductos(){
         inputQuitar.value = "Quitar";
     
     }
+
+*/
+
+fetch("../js/productos.json")
+.then(res => {
+    return res.ok ? res.json() : Promise.reject(res);
+}).then(json => {
+
+    json.forEach(element => {
+
+        let divCardTabla = document.createElement("div");
+        let divCeldaTabla = document.createElement("div");
+        let imgTabla = document.createElement("img");
+        let divBtnTabla = document.createElement("div");
+        let inputAgregar = document.createElement("input");
+        let inputQuitar = document.createElement("input");
+    
+        inputAgregar.type = "button";
+        inputQuitar.type = "button";
+        inputAgregar.className = "btnAgregarCarrito"
+        inputQuitar.className = "btnQuitarCarrito"
+
+        inputAgregar.id = element.id;
+        inputQuitar.id = element.id;
+        
+
+        divBtnTabla.className= "divBtn";
+        divCardTabla.className = "celda";
+        tabla.append(divCardTabla);
+        divCardTabla.append(divCeldaTabla);
+        divCardTabla.append(imgTabla);
+        divCardTabla.append(divBtnTabla);
+        imgTabla.src = element.img;
+
+        divBtnTabla.append(inputAgregar);
+        divBtnTabla.append(inputQuitar);
+
+        divCeldaTabla.innerHTML = "<p>"+element.nombre+"</p> <p>"+"$"+element.precio+"</p>";
+    
+        inputAgregar.value = "Agregar";
+        inputQuitar.value = "Quitar";
+
+    });
+})
+ .catch(err => {   
+    console.log("estamos en el catch " + err.statusText);})
+.finally(()=> console.log("finished"));
+
 }
+
 
 function ActualizarNumeroCarrito() {
 
@@ -131,20 +181,7 @@ function AgregarAlCarrito(e){
     
     let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
     
-    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-
-    
-    /*
-    if (productoEncarrito) {
-        
-        productoEnVenta.m_cantidad++;
-    }
-    else{
-        
-        productosEnCarrito.push(productoEnVenta);
-    }
-    
-    */
+    //let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
 
     productosEnCarrito.find(product => product.m_id == productoEnVenta.m_id ) ?  productoEnVenta.m_cantidad++ : productosEnCarrito.push(productoEnVenta);
 
