@@ -183,7 +183,7 @@ function AgregarAlCarrito(e){
     
     const btn = e.target;
     const id = btn.getAttribute("id"); 
-    
+
     let productoEnVenta =  productosEnVenta.find(producto => producto.id == id);
 
     productosEnCarrito.find(product => product == productoEnVenta) ? productoEnVenta.cantidad++ : productosEnCarrito.push(productoEnVenta);
@@ -259,19 +259,21 @@ function GetBtnAgregar(){
 
     for (const i of btnAgregar) {
         
-        i.addEventListener("click", AgregarAlCarrito); 
+        i.addEventListener("click", AgregarAlCarrito);
     }
-
+    
 }
 
 function GetBtnQuitar(){
 
-    const btnAgregar = document.getElementsByClassName("btnQuitarCarrito");
+    const BtnQuitar = document.getElementsByClassName("btnQuitarCarrito");
 
-    for (const i of btnAgregar) {
+    for (const i of BtnQuitar) {
         
         i.addEventListener("click", QuitarCarrito);
     }
+
+    return  console.log(BtnQuitar);
 
 }
 
