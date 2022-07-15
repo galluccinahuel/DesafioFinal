@@ -1,11 +1,11 @@
 
 function Producto(id, nombre, precio, img){
 
-        this.m_id = id;
-        this.m_nombre = nombre;
-        this.m_precio = precio;
-        this.m_cantidad = 1;
-        this.m_img = img;
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = 1;
+        this.img = img;
 }
 
 const Bifera = new Producto(1, "Bifera", "30000","../img/misc/Bifera.png");
@@ -31,6 +31,7 @@ let productosEnVenta=[
     Cuadrada24cmAqua,
     Cuadrada24cmTerra,
     FlipMangoRosa,
+    SarténContemporánea24cmRosa,
     SarténChef,
     SartenNUIT,
     Savarin24,
@@ -56,12 +57,13 @@ function ImplementarStorage(){
 
 function DesplegarProductos(){
 
-    let tabla = document.getElementById("tabla");
+
+let tabla = document.getElementById("tabla");
 
 /*
     for (const i of productosEnVenta) {
         
-        const {m_id, m_nombre, m_precio, m_cantidad, m_img} = i;
+        const {id, nombre, precio, m_cantidad, img} = i;
 
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
@@ -75,8 +77,8 @@ function DesplegarProductos(){
         inputAgregar.className = "btnAgregarCarrito"
         inputQuitar.className = "btnQuitarCarrito"
 
-        inputAgregar.id = m_id;
-        inputQuitar.id = m_id;
+        inputAgregar.id = id;
+        inputQuitar.id = id;
         
 
         divBtnTabla.className= "divBtn";
@@ -85,12 +87,12 @@ function DesplegarProductos(){
         divCardTabla.append(divCeldaTabla);
         divCardTabla.append(imgTabla);
         divCardTabla.append(divBtnTabla);
-        imgTabla.src = m_img;
+        imgTabla.src = img;
 
         divBtnTabla.append(inputAgregar);
         divBtnTabla.append(inputQuitar);
 
-        divCeldaTabla.innerHTML = "<p>"+m_nombre+"</p> <p>"+"$"+m_precio+"</p>";
+        divCeldaTabla.innerHTML = "<p>"+nombre+"</p> <p>"+"$"+precio+"</p>";
     
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";
@@ -106,6 +108,8 @@ fetch("../js/productos.json")
 
     json.forEach(element => {
 
+        const {id, nombre, precio, cantidad, img} = element;
+
         let divCardTabla = document.createElement("div");
         let divCeldaTabla = document.createElement("div");
         let imgTabla = document.createElement("img");
@@ -118,8 +122,8 @@ fetch("../js/productos.json")
         inputAgregar.className = "btnAgregarCarrito"
         inputQuitar.className = "btnQuitarCarrito"
 
-        inputAgregar.id = element.id;
-        inputQuitar.id = element.id;
+        inputAgregar.id = id;
+        inputQuitar.id = id;
         
 
         divBtnTabla.className= "divBtn";
@@ -128,12 +132,12 @@ fetch("../js/productos.json")
         divCardTabla.append(divCeldaTabla);
         divCardTabla.append(imgTabla);
         divCardTabla.append(divBtnTabla);
-        imgTabla.src = element.img;
+        imgTabla.src = img;
 
         divBtnTabla.append(inputAgregar);
         divBtnTabla.append(inputQuitar);
 
-        divCeldaTabla.innerHTML = "<p>"+element.nombre+"</p> <p>"+"$"+element.precio+"</p>";
+        divCeldaTabla.innerHTML = "<p>"+nombre+"</p> <p>"+"$"+precio+"</p>";
     
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";
@@ -144,8 +148,8 @@ fetch("../js/productos.json")
     console.log("estamos en el catch " + err.statusText);})
 .finally(()=> console.log("finished"));
 
-}
 
+}
 
 function ActualizarNumeroCarrito() {
 
@@ -155,7 +159,7 @@ function ActualizarNumeroCarrito() {
 
     for (let i = 0; i < productosEnCarrito.length; i++) {
         const element = productosEnCarrito[i];
-        cantidadDeProducto += element.m_cantidad;
+        cantidadDeProducto += element.cantidad;
     }
 
     precioP.innerHTML = cantidadDeProducto;
@@ -167,24 +171,23 @@ function DevolverMontoTotalCarrito(){
     console.log(productosEnCarrito);
     for (const i of productosEnCarrito) {
         
-        montoTotal += i.m_precio * i.m_cantidad;
+        montoTotal += i.precio * i.cantidad;
 
     }
     console.log(montoTotal);
 
 }
 
+
 function AgregarAlCarrito(e){
     
     const btn = e.target;
     const id = btn.getAttribute("id"); 
     
-    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+    let productoEnVenta =  productosEnVenta.find(producto => producto.id == id);
+
+    productosEnCarrito.find(product => product == productoEnVenta) ? productoEnVenta.cantidad++ : productosEnCarrito.push(productoEnVenta);
     
-    //let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
-
-    productosEnCarrito.find(product => product.m_id == productoEnVenta.m_id ) ?  productoEnVenta.m_cantidad++ : productosEnCarrito.push(productoEnVenta);
-
     showToast();
     
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
@@ -197,21 +200,21 @@ function QuitarCarrito(e){
     const btn = e.target;
     const id = btn.getAttribute("id");
     
-    let productoEnVenta =  productosEnVenta.find(producto => producto.m_id == id);
+    let productoEnVenta =  productosEnVenta.find(producto => producto.id == id);
     
-    let productoEncarrito = productosEnCarrito.find(product => product.m_id ==  productoEnVenta.m_id ); 
+    let productoEncarrito = productosEnCarrito.find(product => product.id ==  productoEnVenta.id ); 
     
     if (productoEncarrito) {
         
-        let cantidadDeProducto = productoEncarrito.m_cantidad;
+        let cantidadDeProducto = productoEncarrito.cantidad;
         
         if (cantidadDeProducto > 1) {
             
-            productoEnVenta.m_cantidad--;
+            productoEnVenta.cantidad--;
             
         }
         else{
-
+            
             let index = productosEnCarrito.indexOf(productoEncarrito);
             productosEnCarrito.splice(index, 1);        
         }
@@ -221,33 +224,11 @@ function QuitarCarrito(e){
         console.log("producto no existe");
         
     }
-
-
+    
+    
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
     ActualizarNumeroCarrito();
     
-}
-
-function GetBtnAgregar(){
-
-    const btnAgregar = document.getElementsByClassName("btnAgregarCarrito");
-
-    for (const i of btnAgregar) {
-        
-        i.addEventListener("click", AgregarAlCarrito);
-    }
-
-}
-
-function GetBtnQuitar(){
-
-    const btnAgregar = document.getElementsByClassName("btnQuitarCarrito");
-
-    for (const i of btnAgregar) {
-        
-        i.addEventListener("click", QuitarCarrito);
-    }
-
 }
 
 const showToast = () =>{
@@ -272,10 +253,32 @@ const showToast = () =>{
 
 }
 
+function GetBtnAgregar(){
+
+    const btnAgregar = document.getElementsByClassName("btnAgregarCarrito");
+
+    for (const i of btnAgregar) {
+        
+        i.addEventListener("click", AgregarAlCarrito); 
+    }
+
+}
+
+function GetBtnQuitar(){
+
+    const btnAgregar = document.getElementsByClassName("btnQuitarCarrito");
+
+    for (const i of btnAgregar) {
+        
+        i.addEventListener("click", QuitarCarrito);
+    }
+
+}
+
 
 ImplementarStorage();
 DesplegarProductos();
 GetBtnAgregar();
-GetBtnQuitar()
+GetBtnQuitar();
 
 

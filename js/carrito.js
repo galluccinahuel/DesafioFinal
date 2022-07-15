@@ -17,7 +17,7 @@ function ImplementarStorage(){
 ImplementarStorage();
 
 const TotalCarrito = () =>{
-    return productosEnCarrito.reduce((acc, prod) => acc +  prod.m_precio * prod.m_cantidad, 0);
+    return productosEnCarrito.reduce((acc, prod) => acc +  prod.precio * prod.cantidad, 0);
 }
 
 const carrito = document.getElementById("Pcarrito");
@@ -32,9 +32,9 @@ else{
 
     for (const i of productosEnCarrito) {
         
-        const {m_id, m_nombre, m_precio, m_cantidad, m_img} = i;
+        const {id, nombre, precio, cantidad, img} = i;
         
-        carrito.innerHTML += "<div class='divCarrito'><p>"+m_nombre+"</p><p>"+m_cantidad+"</p><p>"+'$'+m_precio+"</p></div>";
+        carrito.innerHTML += "<div class='divCarrito'><p>"+nombre+"</p><p>"+cantidad+"</p><p>"+'$'+precio+"</p></div>";
     }
 
     const divPrecioTotal = document.createElement("div");
