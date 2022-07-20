@@ -57,10 +57,10 @@ function ImplementarStorage(){
 
 function DesplegarProductos(){
 
-
 let tabla = document.getElementById("tabla");
 
 /*
+
     for (const i of productosEnVenta) {
         
         const {id, nombre, precio, m_cantidad, img} = i;
@@ -100,6 +100,7 @@ let tabla = document.getElementById("tabla");
     }
 
 */
+
 
 fetch("../js/productos.json")
 .then(res => {
@@ -142,12 +143,14 @@ fetch("../js/productos.json")
         inputAgregar.value = "Agregar";
         inputQuitar.value = "Quitar";
 
+        inputAgregar.addEventListener("click", AgregarAlCarrito);
+        inputQuitar.addEventListener("click", QuitarCarrito);
+
     });
 })
  .catch(err => {   
     console.log("estamos en el catch " + err.statusText);})
 .finally(()=> console.log("finished"));
-
 
 }
 
@@ -177,7 +180,6 @@ function DevolverMontoTotalCarrito(){
     console.log(montoTotal);
 
 }
-
 
 function AgregarAlCarrito(e){
     
@@ -253,15 +255,17 @@ const showToast = () =>{
 
 }
 
+/*
 function GetBtnAgregar(){
 
     const btnAgregar = document.getElementsByClassName("btnAgregarCarrito");
 
+    console.log("GetBtnAgregar", btnAgregar);
     for (const i of btnAgregar) {
         
         i.addEventListener("click", AgregarAlCarrito);
     }
-    
+
 }
 
 function GetBtnQuitar(){
@@ -273,14 +277,12 @@ function GetBtnQuitar(){
         i.addEventListener("click", QuitarCarrito);
     }
 
-    return  console.log(BtnQuitar);
-
 }
 
-
+*/
 ImplementarStorage();
 DesplegarProductos();
-GetBtnAgregar();
-GetBtnQuitar();
+//GetBtnAgregar();
+//GetBtnQuitar();
 
 
