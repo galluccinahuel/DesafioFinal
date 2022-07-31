@@ -224,6 +224,18 @@
     margin: 2rem;
 }
 
+.container{
+    @include sizes(100%, 50%);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.aside-navbar{
+    @include sizes(20%, auto);
+    background-color: map-get($colores , colorRosa );
+
+}
+
 .table{
     display: grid;
     grid-template-columns: repeat(3, 300px);
